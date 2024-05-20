@@ -194,7 +194,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                     (transaction, error) in
                     guard let transaction = self.transaction else {
                         // Handle invalid transaction, check error
-                        // NSLog ("openCustomUI:----------> \(String(describing: error))")
+                        //  NSLog ("openCustomUI:----------> \(String(describing: error))")
                         self.createalart(titletext: "invalid transaction",
                                          msgtext: error?.localizedDescription ??  "not known")
                         return
@@ -211,14 +211,14 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                         result1("success")
                     }
                     else {
-//                        NSLog ("openCustomUI:----------> \(String(describing: error))")
+                        // NSLog ("openCustomUI:----------> \(String(describing: error))")
                         self.createalart(titletext: "invalid transaction",
                                          msgtext: error?.localizedDescription ?? "not known")
                     }
                 }
             } // do
             catch let error as NSError {
-//                NSLog ("openCustomUI:----------> \(String(describing: error))")
+                // NSLog ("openCustomUI:----------> \(String(describing: error))")
                 self.createalart(titletext: "Invalied Transaction", msgtext: error.localizedDescription)
             }
         }
@@ -262,7 +262,7 @@ public class SwiftPaymentPlugin: NSObject,FlutterPlugin ,SFSafariViewControllerD
                 (action) in alertController.dismiss(animated: true, completion: nil)
             }))
             //  alertController.view.tintColor = UIColor.orange
-            UIApplication.shared.delegate?.window??.rootViewController?.present(
+            UIApplication.shared.windows.first?.rootViewController?.present(
                 alertController, animated: true, completion: nil)
         }
     }
